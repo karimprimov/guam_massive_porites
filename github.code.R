@@ -5,8 +5,7 @@
 #not populations of the same species, predominantly occupy river deltas and adjacent (< 100M) fore reefs on Guam respectively, 
 #and bleaching less prevalent in river deltas. 
 
-
-#demultiplexing fastq files in order to generate sample-specific fastq files
+#Demultiplexing fastq files in order to generate sample-specific fastq files
 screen -L python3 identify_dbrs6.py \n
 -i ~/Karim_Porites/ddRAD/info/sampleinfofiles/RAD.b0.sampleinfofiles/RAD8.3.updated.sampleinfofile.txt -l7 1 \n
 -f ~/Karim_Porites/ddRAD/raw/RAD8.3.trimming.output -s KP.RAD8.3.demult.output.txt -b 0
@@ -66,11 +65,20 @@ do
 samtools index $i > ${i%.sorted.bam}.indexed.bam
 Done
 
+
+#Phylogenetic Tree Code
+#Phylogenetic tree phylip file code:
+/usr/local/bin/populations -P . -M /media/RAID/karim/Karim_Porites/ddRAD/info/popmaps/thesis.dataset.popmaps/200815.bowtie.aligned.phylogenetic.popmap -R 0.30 --phylip-var
+
+
+#RAxML Phylogenetic Tree Reconstruction Code:
+/usr/bin/raxmlHPC-PTHREADS-AVX -T 4 -n result -s 200829.10bs.iqtree.varsites.phy -m ASC_GTRCAT -c 25 -p 12345 -f a -N 1000 -x 12345 --asc-corr lewis
+
+
 Fastq to Genotype Likelihood Analysis
 
-
 #Examples:
-  
+
 #To generate ibs, cov.Mat, and other GL files:
 #Genomic dataset:
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 25 -dosnpstat 1 -doHWE 1 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 79 -snp_pval 1e-5 -minMaf 0.05"
@@ -85,14 +93,8 @@ TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -setMinDepthIn
 #Orange clade:
 /media/RAID/david/tools/ANGSD/angsd/angsd -GL 1 -out genolike -nThreads 10 -doGlf 2 -doMajorMinor 1 -SNP_pval 1e-6 -doMaf 1 -bam orangeclade.pop.bams
 
-#Phylogenetic tree phylip file code:
-/usr/local/bin/populations -P . -M /media/RAID/karim/Karim_Porites/ddRAD/info/popmaps/thesis.dataset.popmaps/200815.bowtie.aligned.phylogenetic.popmap -R 0.30 --phylip-var
-
-#RAxML Phylogenetic Tree Reconstruction Code:
-/usr/bin/raxmlHPC-PTHREADS-AVX -T 4 -n result -s 200829.10bs.iqtree.varsites.phy -m ASC_GTRCAT -c 25 -p 12345 -f a -N 1000 -x 12345 --asc-corr lewis
 
 #PCoA Example
-
 #ANGSD:
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 25 -dosnpstat 1 -doHWE 1 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 16 -snp_pval 1e-5 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -setMinDepthInd 8 -doCov 1 -doGeno 8 -dobcf 1 -doPost 1 -doGlf 2"
@@ -138,9 +140,6 @@ legend("bottomleft", legend=c("Fore Reef", "River Delta"), col= "black", pch = c
 
 
 #Admixture Plot Example
-
-/media/SCRATCH/hector/0SOFTWARE/ANGSD/angsd -GL 1 -out 230303.clades4to7.genomic.dataset.admixture -nThreads 10 -doGlf 2 -doMajorMinor 1 -SNP_pval 1e-6 -doMaf 1 -bam 230303.clades4to7.genomic.dataset.admix.bams
-
 (K from 2 - 8)
 for K in `seq 2 8`
 do
