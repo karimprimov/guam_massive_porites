@@ -5,7 +5,7 @@
 #not populations of the same species, predominantly occupy river deltas and adjacent (< 100M) fore reefs on Guam respectively, 
 #and bleaching less prevalent in river deltas. 
 
-#Demultiplexing fastq files in order to generate sample-specific fastq files
+#Demultiplexing fastq files in order to generate sample-specific fastq files (credit: Hannah Weigand)
 screen -L python3 identify_dbrs6.py \n
 -i ~/Karim_Porites/ddRAD/info/sampleinfofiles/RAD.b0.sampleinfofiles/RAD8.3.updated.sampleinfofile.txt -l7 1 \n
 -f ~/Karim_Porites/ddRAD/raw/RAD8.3.trimming.output -s KP.RAD8.3.demult.output.txt -b 0
