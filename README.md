@@ -1,6 +1,6 @@
 In this script, code is included for demultiplexing, trimming, generating multi-locus genotypes, and running population genomic analyses. This code includes examples of each step in the Linux bioinformatic and R pipeline. 
 
-This code was produced to study the population genomics of a morphologically convergent coral species group called massive Porites. Found throughout the Indo-Pacific, they occur in different reef environments, and in this study, we find that different species, not populations of the same species, predominantly occupy river deltas and adjacent (< 100M) fore reefs on Guam respectively, and bleaching less prevalent in river deltas. 
+This code was produced to study the population genomics of a morphologically convergent coral species group called massive Porites. Found throughout the Indo-Pacific, they occur in different reef environments, and in this study, we find that different species, not populations of the same species, predominantly occupy either river deltas or adjacent (< 100M) fore reefs on Guam, and bleaching was found to be less prevalent in river deltas. Bleaching variation in putative coral species and coral ecomorphs may therefore be driven by genomic differences, in addition to environmental factors, and therefore genotype-environment interactions.
 
 In this analysis, we use the following programs to curate our datasets, and subsequently analyse our data in both Linux and RStudio:
 
